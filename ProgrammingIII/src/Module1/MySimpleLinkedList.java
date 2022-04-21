@@ -1,8 +1,6 @@
 package Module1;
 
-import java.util.Iterator;
-
-public class MySimpleLinkedList<T> implements MyIterable<T> {
+public class MySimpleLinkedList<T extends Comparable<T>> implements Iterable<T> {
 
     private Node<T> first;
     private int size;
@@ -57,6 +55,27 @@ public class MySimpleLinkedList<T> implements MyIterable<T> {
             tmp = tmp.getNext();
         }
         return -1;
+    }
+
+    public void sort(){
+        Node<T> current = this.first, index = null;
+        T temp;
+        if(this.first == null)
+            return;
+        else {
+            while(current != null) {
+                index = current.getNext();
+                while(index != null) {
+                    if(current.getInfo().compareTo(index.getInfo()) > 0) {
+                        temp = current.getInfo();
+                        current.setInfo(index.getInfo());
+                        index.setInfo(temp);
+                    }
+                    index = index.getNext();
+                }
+                current = current.getNext();
+            }
+        }
     }
 
     @Override

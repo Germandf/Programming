@@ -1,6 +1,6 @@
 package Module1;
 
-public class Pile<T> {
+public class Pile<T extends Comparable<T>> {
 
     MySimpleLinkedList<T> list;
 
