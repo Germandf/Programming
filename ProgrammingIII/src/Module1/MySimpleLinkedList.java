@@ -47,6 +47,18 @@ public class MySimpleLinkedList<T> implements Iterable<T> {
         return this.size;
     }
 
+    public int indexOf(T info){
+        if (this.first == null)
+            return -1;
+        var tmp = this.first;
+        for(int i = 0; i < this.size; i++){
+            if(tmp.getInfo().equals(info))
+                return i;
+            tmp = tmp.getNext();
+        }
+        return -1;
+    }
+
     @Override
     public String toString() {
         if (this.first == null)

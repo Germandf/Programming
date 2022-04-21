@@ -8,8 +8,8 @@ public class Pile<T> {
         this.list = new MySimpleLinkedList<T>();
     }
 
-    public void push(T o){
-        list.insertFront(o);
+    public void push(T info){
+        list.insertFront(info);
     }
 
     public T pop(){
