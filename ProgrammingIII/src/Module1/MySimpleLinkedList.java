@@ -2,7 +2,7 @@ package Module1;
 
 import java.util.Iterator;
 
-public class MySimpleLinkedList<T> implements Iterable<T> {
+public class MySimpleLinkedList<T> implements MyIterable<T> {
 
     private Node<T> first;
     private int size;
@@ -75,7 +75,7 @@ public class MySimpleLinkedList<T> implements Iterable<T> {
     }
 
     @Override
-    public Iterator<T> iterator() {
+    public MyIterator<T> iterator() {
         return new MyIterator<T>(this.first);
     }
 

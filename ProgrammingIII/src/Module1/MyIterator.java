@@ -6,8 +6,8 @@ public class MyIterator<T> implements Iterator<T> {
 
     private Node<T> cursor;
 
-    public MyIterator(Node<T> firstDeLaLista) {
-        this.cursor = firstDeLaLista;
+    public MyIterator(Node<T> first) {
+        this.cursor = first;
     }
 
     @Override
@@ -17,9 +17,13 @@ public class MyIterator<T> implements Iterator<T> {
 
     @Override
     public T next() {
-        T info = this.cursor.getInfo();
+        var info = this.cursor.getInfo();
         this.cursor = this.cursor.getNext();
         return info;
+    }
+
+    public T getCurrent(){
+        return this.cursor.getInfo();
     }
 
 }
