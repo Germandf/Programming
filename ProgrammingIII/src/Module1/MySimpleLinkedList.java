@@ -78,6 +78,15 @@ public class MySimpleLinkedList<T extends Comparable<T>> implements Iterable<T> 
         }
     }
 
+    public boolean isPalindrome(){
+        var isPalindrome = true;
+        for (int i = 0; i < this.size / 2 && isPalindrome; i++){
+            if(!this.get(i).equals(this.get(size - i - 1)))
+                isPalindrome = false;
+        }
+        return isPalindrome;
+    }
+
     @Override
     public String toString() {
         if (this.first == null)

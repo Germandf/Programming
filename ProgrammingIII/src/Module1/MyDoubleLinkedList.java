@@ -3,6 +3,7 @@ package Module1;
 public class MyDoubleLinkedList<T> implements Iterable<T> {
 
     private DoubleNode<T> first;
+    private DoubleNode<T> last;
     private int size;
 
     public MyDoubleLinkedList() {
@@ -13,6 +14,8 @@ public class MyDoubleLinkedList<T> implements Iterable<T> {
         var tmp = new DoubleNode<T>(info);
         if(this.first != null)
             this.first.setPrevious(tmp);
+        else
+            this.last = tmp;
         tmp.setNext(this.first);
         this.first = tmp;
         this.size++;
@@ -23,6 +26,8 @@ public class MyDoubleLinkedList<T> implements Iterable<T> {
         if(tmp == null)
             return null;
         this.first = this.first.getNext();
+        if(this.first == null)
+            this.last = null;
         this.first.setPrevious(null);
         this.size--;
         return tmp.getInfo();
@@ -46,6 +51,17 @@ public class MyDoubleLinkedList<T> implements Iterable<T> {
 
     public int size() {
         return this.size;
+    }
+
+    public boolean isPalindrome(){
+        var isPalindrome = true;
+        while(this.first != null && this.last != null && isPalindrome){
+            if(!this.first.getInfo().equals(this.last.getInfo()))
+                isPalindrome = false;
+            this.first = this.first.getNext();
+            this.last = this.last.getPrevious();
+        }
+        return isPalindrome;
     }
 
     @Override
