@@ -10,7 +10,7 @@ public class MySimpleLinkedList<T extends Comparable<T>> implements Iterable<T> 
     }
 
     public void insertFront(T info) {
-        Node<T> tmp = new Node<T>(info,null);
+        Node<T> tmp = new Node<T>(info);
         tmp.setNext(this.first);
         this.first = tmp;
         this.size++;

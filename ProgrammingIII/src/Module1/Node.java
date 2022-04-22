@@ -10,9 +10,9 @@ public class Node<T> {
         this.next = null;
     }
 
-    public Node(T info, Node<T> next) {
+    public Node(T info) {
+        this();
         this.setInfo(info);
-        this.setNext(next);
     }
 
     public Node<T> getNext() {
