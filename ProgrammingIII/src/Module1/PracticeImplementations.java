@@ -29,7 +29,7 @@ public class PracticeImplementations {
             var info1 = it1.next();
             var it2 = list1.iterator();
             var found = false;
-            while(it2.hasNext() || found == false){
+            while(it2.hasNext() && !found){
                 var info2 = it2.next();
                 if(info1 == info2){
                     newList.insertFront(info1);
@@ -38,6 +38,24 @@ public class PracticeImplementations {
             }
         }
         newList.sort();
+        return newList;
+    }
+
+    public static <T extends Comparable<T>> MySimpleLinkedList<T> GetListWithFirstsValuesAndSecondsExcluded(MySimpleLinkedList<T> list1, MySimpleLinkedList<T> list2){
+        var newList = new MySimpleLinkedList<T>();
+        var it1 = list1.iterator();
+        while(it1.hasNext()){
+            var value1 = it1.next();
+            var found = false;
+            var it2 = list2.iterator();
+            while(it2.hasNext() && !found){
+                var value2 = it2.next();
+                if(value1.equals(value2))
+                    found = true;
+            }
+            if(!found)
+                newList.insertFront(value1);
+        }
         return newList;
     }
 
