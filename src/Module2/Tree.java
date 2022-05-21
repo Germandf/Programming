@@ -124,7 +124,6 @@ public class Tree {
         return currentMax;
     }
 
-    // O(n)
     public ArrayList<Integer> getElementsAtLevel(int level){
         return getElementsAtLevel(level, 0);
     }
@@ -141,6 +140,31 @@ public class Tree {
         return elements;
     }
 
+    public boolean delete(Integer element){
+        if(!hasElement(element))
+            return false;
+        deleteTree(element);
+        return true;
+    }
 
+    // O(h)
+    public Tree deleteTree(int element) {
+        if(value > element && left != null)
+            left = left.deleteTree(element);
+        else if(value < element && right != null)
+            right = right.deleteTree(element);
+        else{
+            if(left == null && right == null)
+                return null;
+            else if(right != null){
+                value = right.value;
+                right = deleteTree(value);
+            }else{
+                value = left.value;
+                left = deleteTree(value);
+            }
+        }
+        return this;
+    }
 
 }
