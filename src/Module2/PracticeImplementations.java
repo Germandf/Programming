@@ -42,4 +42,31 @@ public class PracticeImplementations {
             return decimal % 2 + 10 * (decimalToBinary(decimal / 2));
     }
 
+    // O(n^2)
+    public static void bubbleSort(int[] array){
+        int aux;
+        for (int i = 0; i <= array.length; i++) {
+            for (int j = 0; j <= array.length - i; j++) {
+                if(array[j] > array[j + 1]){
+                    aux = array[j + 1];
+                    array[j + 1] = array[j];
+                    array[j] = aux;
+                }
+            }
+        }
+    }
+
+    // O(n^2)
+    public static void selectionSort(int[] array){
+        for (int i = 0; i <= array.length; i++) {
+            int min_ix = i;
+            for (int j = i + 1; j <= array.length - i; j++)
+                if(array[j] < array[min_ix])
+                    min_ix = j;
+            int aux = array[i];
+            array[i] = array[min_ix];
+            array[min_ix] = aux;
+        }
+    }
+
 }
