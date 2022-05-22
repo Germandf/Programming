@@ -24,4 +24,23 @@ public class Arc<T> {
         return label;
     }
 
+    @Override
+    public boolean equals(Object obj)
+    {
+        if(this == obj)
+            return true;
+        if(obj == null || obj.getClass()!= this.getClass())
+            return false;
+        Arc arc = (Arc) obj;
+        return (this.originVertex == arc.getOriginVertex() && this.destinyVertex == arc.getDestinyVertex());
+    }
+
+    @Override
+    public int hashCode() {
+        int result = 17;
+        result = 31 * result + originVertex;
+        result = 31 * result + destinyVertex;
+        return result;
+    }
+
 }
