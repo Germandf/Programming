@@ -167,4 +167,31 @@ public class Tree {
         return this;
     }
 
+    // O(n)
+    public void printPreOrder(){
+        System.out.println(value);
+        if(left != null)
+            left.printPreOrder();
+        if(right != null)
+            right.printPreOrder();
+    }
+
+    // O(n)
+    public void printPosOrder(){
+        if(left != null)
+            left.printPosOrder();
+        if(right != null)
+            right.printPosOrder();
+        System.out.println(value);
+    }
+
+    // O(n)
+    public void printInOrder(){
+        if(left != null)
+            left.printInOrder();
+        System.out.println(value);
+        if(right != null)
+            right.printInOrder();
+    }
+
 }
