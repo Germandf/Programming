@@ -4,38 +4,34 @@ import java.util.Iterator;
 
 public class PracticeImplementations {
 
+    // O(n)
     public static boolean arrayIsOrdered(int[] array, int position){
-        if(position < 0 || position >= array.length - 1)
+        if(position < 0 || position >= array.length)
             return true;
-        if(arrayIsOrdered(array, position + 1)){
+        if(arrayIsOrdered(array, position + 1))
             return array[position] < array[position + 1];
-        }
-        else{
+        else
             return false;
-        }
     }
 
+    // O(n)
     public static boolean valueExistsInList(Iterator<Integer> iterator, int value){
-        if (iterator.hasNext()){
-            if(iterator.next().equals(value)){
-                return true;
-            }
-            else{
-                return valueExistsInList(iterator, value);
-            }
-        }
-        return false;
+        if (!iterator.hasNext())
+            return false;
+        if(iterator.next().equals(value))
+            return true;
+        else
+            return valueExistsInList(iterator, value);
     }
 
+    // O(n)
     public static boolean valueExistsInOrderedArray(int[] array, int value, int position){
-        if(position < 0 || position >= array.length - 1)
+        if(position < 0 || position >= array.length)
             return false;
-        if(!valueExistsInOrderedArray(array, value, position + 1)){
-            return array[position] == value;
-        }
-        else{
+        if(array[position] == value)
             return true;
-        }
+        else
+            return valueExistsInOrderedArray(array, value, position + 1);
     }
 
 }

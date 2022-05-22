@@ -33,4 +33,6 @@ public class TreeWithNode {
         }
     }
 
+    // TODO same tree methods in TreeWithNode, maybe create an interface for both?
+
 }
