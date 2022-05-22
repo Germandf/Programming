@@ -69,4 +69,67 @@ public class PracticeImplementations {
         }
     }
 
+    // O(log2 n)
+    public static void mergeSort(int[] array) {
+        if (array.length < 2)
+            return;
+        int[] arrayLeft = new int[array.length / 2];
+        int[] arrayRight = new int[array.length - array.length / 2];
+        for (int i = 0; i < array.length / 2; i++)
+            arrayLeft[i] = array[i];
+        for (int i = array.length / 2; i < array.length; i++)
+            arrayRight[i - array.length / 2] = array[i];
+        mergeSort(arrayLeft);
+        mergeSort(arrayRight);
+        merge(array, arrayLeft, arrayRight);
+    }
+
+    public static void merge(int[] array, int[] arrayLeft, int[] arrayRight) {
+        int i = 0, j = 0, k = 0;
+        while (i < arrayLeft.length && j < arrayRight.length)
+            if (arrayLeft[i] <= arrayRight[j])
+                array[k++] = arrayLeft[i++];
+            else
+                array[k++] = arrayRight[j++];
+        while (i < arrayLeft.length)
+            array[k++] = arrayLeft[i++];
+        while (j < arrayRight.length)
+            array[k++] = arrayRight[j++];
+    }
+
+    // O(n^2)
+    public static void quickSort(int[] array){
+        quickSort(array, 0, array.length - 1);
+    }
+
+    private static void quickSort(int[] array, int startingIx, int endingIx)
+    {
+        if (startingIx >= endingIx)
+            return;
+        int pivotIx = quickSortPartition(array, startingIx, endingIx);
+        quickSort(array, startingIx, pivotIx - 1);
+        quickSort(array, pivotIx + 1, endingIx);
+    }
+
+    private static int quickSortPartition(int[] array, int startingIx, int endingIx)
+    {
+        int pivot = array[endingIx];
+        int i = startingIx;
+        for(int j = startingIx; j < endingIx; j++)
+            if (array[j] < pivot)
+            {
+                swap(array, i, j);
+                i++;
+            }
+        swap(array, i, endingIx);
+        return i;
+    }
+
+    private static void swap(int[] array, int i, int j)
+    {
+        int temp = array[i];
+        array[i] = array[j];
+        array[j] = temp;
+    }
+
 }
