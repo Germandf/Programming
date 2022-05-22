@@ -34,4 +34,12 @@ public class PracticeImplementations {
             return valueExistsInOrderedArray(array, value, position + 1);
     }
 
+    // O(n)
+    public static int decimalToBinary(int decimal){
+        if (decimal <= 0)
+            return 0;
+        else
+            return decimal % 2 + 10 * (decimalToBinary(decimal / 2));
+    }
+
 }
