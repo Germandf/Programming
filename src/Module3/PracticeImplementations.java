@@ -31,6 +31,32 @@ public class PracticeImplementations {
         return time;
     }
 
+    public static <T> boolean GraphHasCycle(Graph<T> graph){
+        var vertexesVisited = new String[graph.getVertexesAmount()];
+        for (var vertexVisited: vertexesVisited)
+            vertexVisited = "BLANCO";
+        var i = graph.getVertexes();
+        while (i.hasNext()){
+            var vertex = i.next();
+            if (vertexesVisited[vertex] == "BLANCO")
+                if(GraphHasCycleVisit(graph, vertexesVisited, vertex))
+                    return true;
+        }
+        return false;
+    }
 
+    public static <T> boolean GraphHasCycleVisit(Graph<T> graph, String[] vertexesVisited, int vertex){
+        vertexesVisited[vertex] = "AMARILLO";
+        var i = graph.getAdjacent(vertex);
+        while (i.hasNext()) {
+            int adjacentVertex = i.next();
+            if (vertexesVisited[adjacentVertex] == "BLANCO")
+                GraphHasCycleVisit(graph, vertexesVisited, adjacentVertex);
+            else if (vertexesVisited[adjacentVertex] == "AMARILLO")
+                return true;
+        }
+        vertexesVisited[vertex] = "NEGRO";
+        return false;
+    }
 
 }
